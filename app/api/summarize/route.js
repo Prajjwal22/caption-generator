@@ -14,7 +14,6 @@ export async function POST(request) {
   try {
     const response = await fetch(url, options);
     let data = await response.json();
-    console.log(response);
     return NextResponse.json({ data }, { status: 200 });
   } catch (error) {
     console.error(error);

@@ -24,8 +24,6 @@ export default function Home() {
     setCaption(res.data.captions);
     setLoading(false)
   };
-
-  console.log(caption);
   return (
     <main className="flex min-h-screen flex-col items-center justify-between g-4 p-24">
       <input placeholder="enter image url" onChange={handleImage} className="w-96 h-10" type="text" />
@@ -57,8 +55,8 @@ export default function Home() {
         {loading ? "Loading...": "Generate Caption"}
       </button>
       <p className="italic bg-yellow-300 p-5 rounded">
-        {caption?.map((cap) => (
-          <li>{cap}</li>
+        {caption?.map((cap, i) => (
+          <li className="hover:bg-slate-400 p-1 cursor-pointer" onClick={()=>navigator.clipboard.writeText(cap)} key={i}>{cap}</li>
         ))}
       </p>
     </main>
