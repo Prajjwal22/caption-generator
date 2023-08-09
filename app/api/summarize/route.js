@@ -3,7 +3,9 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
     let data = await request.json()
     const {imageurl, emoji, hashtag, captions} = data
-    const url = `https://image-caption-generator2.p.rapidapi.com/v2/captions?imageUrl=${imageurl}&useEmojis=${emoji}&useHashtags=${hashtag}&limit=${captions}`;
+    let includeEmojis =  emoji  === 'true' ? '&useEmojis=true': '';
+    let includeHashtags = hashtag === 'true' ? '&useHashtags=true' : '';
+    const url = `https://image-caption-generator2.p.rapidapi.com/v2/captions?imageUrl=${imageurl}${includeEmojis+includeHashtags}&limit=${captions}`;
     const options = {
         method: 'GET',
         headers: {
@@ -11,7 +13,7 @@ export async function POST(request) {
             'X-RapidAPI-Host': 'image-caption-generator2.p.rapidapi.com'
         }
     };
-
+    
   try {
     const response = await fetch(url, options);
     let data = await response.json();

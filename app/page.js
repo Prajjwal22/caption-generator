@@ -47,8 +47,8 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between g-3 p-24">
-      <form onSubmit={handleGenerate}>
+    <main className="flex min-h-screen max-w-3xl m-auto flex-col items-center justify-between g-3 p-24">
+      <form className="flex flex-col items-center gap-4" onSubmit={handleGenerate}>
         <input
           name="imageurl"
           placeholder="enter image url"
@@ -82,12 +82,12 @@ export default function Home() {
           </label>
         </div>
         {image !== "" ? (
-          <img src={image} height={300} width={300} alt="Image" />
+          <img className="object-cover w-96" src={image} height={400} width={500} alt="Image" />
         ) : null}
         <button
           disabled={loading}
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+          className="text-white w-fit bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
         >
           {loading && (
             <svg
@@ -114,8 +114,8 @@ export default function Home() {
       <p className="italic bg-yellow-300 p-5 rounded">
         {caption?.map((cap, i) => (
           <li
-            className="hover:bg-slate-400 p-1 cursor-pointer"
-            onClick={() => navigator.clipboard.writeText(cap)}
+            className="hover:bg-slate-200 p-1 cursor-pointer"
+            onClick={() => {navigator.clipboard.writeText(cap); alert('copied')}}
             key={i}
           >
             {cap}
