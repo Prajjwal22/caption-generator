@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-    let imageURL = await request.json()
-    const url = `https://image-caption-generator2.p.rapidapi.com/v2/captions?imageUrl=${imageURL}`;
+    let data = await request.json()
+    const {imageurl, emoji, hashtag, captions} = data
+    const url = `https://image-caption-generator2.p.rapidapi.com/v2/captions?imageUrl=${imageurl}&useEmojis=${emoji}&useHashtags=${hashtag}&limit=${captions}`;
     const options = {
         method: 'GET',
         headers: {
