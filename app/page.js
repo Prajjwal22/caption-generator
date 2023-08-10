@@ -57,21 +57,21 @@ export default function Home() {
           type="text"
         />
         <div className="flex flex0 flex-wrap gap-4">
-          <label for="emoji">
+          <label htmlFor="emoji">
             Use emojis?
             <select name="emoji" id="emoji">
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
           </label>
-          <label for="hashtag">
+          <label htmlFor="hashtag">
             Use hashtags?
             <select name="hashtag" id="hashtag">
               <option value={true}>Yes</option>
               <option value={false}>No</option>
             </select>
           </label>
-          <label for="captions">
+          <label htmlFor="captions">
             How many captions need?
             <select name="captions" id="captions">
               <option value={1}>1</option>
